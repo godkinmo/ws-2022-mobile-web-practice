@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>澳門健康碼</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-200 antialiased">
+    <div class="max-w-md mx-auto min-h-screen bg-[#EDFBF7] shadow-lg">
+      <nav class="fixed z-10 top-0 left-0 w-full">
+        <!-- <div class="px-4 relative flex justify-between h-16 items-center">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <h1 class="text-lg text-[#4C9289] font-medium">澳門健康碼</h1>
+          </div>
+
+          <a href="#" class="z-10 w-8 h-8 bg-[#D2D2D2] rounded-full flex items-center justify-center">
+            <img src="/icons/solid/home.svg" class="w-6 h-6" />
+          </a>
+
+          <a href="#" class="z-10 w-8 h-8 flex items-center justify-center">
+            <img src="/icons/solid/cog.svg" class="w-full h-full" />
+          </a>
+        </div> -->
+
+        <div class="bg-[#59AA93] h-16 flex">
+          <button type="button" class="border-r-[2px] border-[#CCCCCC] px-4 flex items-center justify-center">
+            <!-- <img src="/icons/solid/arrow-path.svg" class="w-16 h-16" /> -->
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#CCCCCC" class="w-14 h-14">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+            </svg>
+          </button>
+          <div class="flex items-center px-2">
+            <img
+              class="h-10 mr-2"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAMAAABG8BK2AAAAA3NCSVQICAjb4U/gAAAB/lBMVEX////////3///v///m///e///W///M///U/vrg+vnF///E//rP/Pe9//+2//+u//+2/fen///F9/S3+fXK9PC69/Kb//y29/GU//6U//W+8u7G8Oys9/Cl8uy66+eo7+mv7OfG5uOs6uW15+aG9Ou15t6f5N+t4NuU5d6z3dms3dmn39yb4N2j3tiP5N2W4dyy2dab3teP4duF5Nyo2dZ159+T3td65d2L4Nlv592W1M+c082Hz8uLzMZ8zsiDzMWMx8Fj0suEx8CQxMBpz8R6ysFdz8V9wr2CwLuJvLd+v7t8vbdYx76Eu7ZswbpsvrhzvbWEt7JcwLhyta5Lv7R6saxrtK1ysKtCvrNbtaxHu7BrsKtyradGuLA7uq88uK1rqaRypqIztq5jpJ5rop0/raRYm5RVnJZXmJJPmJFJmJNJlI8nm5JJjosrk4hAi4Q5ioQxjIUZlIRKhHskjoQxhoFAgXs6gX0Wi4IxgnwTi4FBfnkpg3o3fno7fHYfg3kag3wxfXkqf3ojf3oxfHUfgHcTgnkoe3MWgHQOgHY5dG4henQFgnoOfHMQe2sYd28hcmsocWoFeW4Pc2kea2UXbWQAdGsFcWQAcWQNamIAbGMJamEAa1sWY1sHZ1sOZFsGZV8IY1oAY1oDYFUJX1QIXVYQW1QJWlQCXFMMU03ZagB1AAAAqnRSTlMA/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9Mj8NgAAAAJcEhZcwAAFxEAABcRAcom8z8AAAAfdEVYdFNvZnR3YXJlAE1hY3JvbWVkaWEgRmlyZXdvcmtzIDi1aNJ4AAAAFnRFWHRDcmVhdGlvbiBUaW1lADA1LzMxLzEyROyFHwAABjpJREFUWIXtWPt7E0UUpbuzu3VrQUQsoAIWxUpTa0oFCaJYfBd8RSiKTyoPeSi+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"
+            />
+
+            <div class="text-white text-xs">
+              <div class="font-medium tracking-widest">澳門特別行政區政府衛生局</div>
+              <div class="text-[10px]">Serviços de Saúde do Governo da Região Administrativa Especial de Macau</div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <main class="pb-24 pt-16">
+        <section class="border-b border-[#EEEEEE] px-4 py-6">
+          <h2 class="text-xl font-medium bg-[#ABF0DD] py-1 px-2">選擇申報的人（可多選）</h2>
+
+          <div class="mt-4 px-4">
+            <input id="jack" type="checkbox" checked class="peer w-6 h-6 border">
+
+            <label for="jack" class="inline-block ml-2">
+              <span class="block transform -translate-y-1.5">馮學健（註冊人）</span>
+            </label>
+
+            <div class="hidden peer-checked:block mt-4">
+              <table class="border w-full">
+                <thead>
+                  <tr>
+                    <th class="bg-[#F5F5F5] py-4 border text-left font-normal px-4">姓名:馮學健（註冊人）</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b">
+                    <td class="bg-white flex px-2 py-3">
+                      <div class="w-1/2 font-semibold">症狀：</div>
+                      <div class="w-1/2">無</div>
+                    </td>
+                  </tr>
+                  <tr class="border-b">
+                    <td class="bg-white flex px-2 py-3">
+                      <div class="w-1/2 font-semibold">曾密切接觸病人：（有/無 ）</div>
+                      <div class="w-1/2">無</div>
+                    </td>
+                  </tr>
+                  <tr class="border-b">
+                    <td class="bg-white flex px-2 py-3">
+                      <div class="w-1/2 font-semibold">旅居史：（有/無）</div>
+                      <div class="w-1/2">無外遊史</div>
+                    </td>
+                  </tr>
+                  <tr class="border-b">
+                    <td class="bg-white flex px-2 py-3">
+                      <div class="w-1/2 font-semibold">在澳地址：</div>
+                      <div class="w-1/2">從身份證明局提取</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="border-b border-[#EEEEEE] py-6 px-16 md:px-8">
+          <div class="flex flex-col md:flex-row md:flex-wrap space-y-4 md:space-y-0 md:gap-4">
+            <button type="button" class="truncate bg-white rounded-lg w-full md:w-auto px-4 border border-[#67B5D6] py-2 text-white bg-[#75BEDA]">
+              提交本地
+            </button>
+            <button type="button" class="truncate bg-white rounded-lg w-full md:w-auto px-4 border border-[#CCCCCC] py-2">
+              提交(出入境）
+            </button>
+            <button type="button" class="truncate bg-white rounded-lg w-full md:w-auto px-4 border border-[#CCCCCC] py-2">
+              新增
+            </button>
+            <button type="button" class="truncate bg-white rounded-lg w-full md:w-auto px-4 border border-[#CCCCCC] py-2">
+              修改
+            </button>
+            <button type="button" class="truncate bg-white rounded-lg w-full md:w-auto px-4 border border-[#CCCCCC] py-2">
+              刪除
+            </button>
+          </div>
+        </section>
+
+        <section class="px-4 py-6 space-y-6 break-all">
+          <div>
+            <p>常規（自費）核酸檢測連結：</p>
+            <p><a class="text-[#4678B2]" href="https://eservice.ssm.gov.mo/rnatestbook/V21/">https://eservice.ssm.gov.mo/rnatestbook/V21/</a></p>
+            <p>自費進行核酸檢測，必須預約，可提供紙本檢測證明，核檢結果可用作通關，旦可視為全民核檢結果。</p>
+          </div>
+          <div>
+            <p>全民/重點人群/區域核酸檢測預約系統(免費）：</p>
+            <p><a class="text-[#4678B2]" href="https://eservice.ssm.gov.mo/allpeoplernatestbook">https://eservice.ssm.gov.mo/allpeoplernatestbook</a></p>
+          </div>
+          <div>
+            <p>快速抗原檢測結果申報平台：</p>
+            <p><a class="text-[#4678B2]" href="https://app.ssm.gov.mo/generalrat">https://app.ssm.gov.mo/generalrat</a></p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="fixed right-8 bottom-12">
+      <button type="button" class="relative w-20 h-20 bg-white rounded-full drop-shadow-xl flex items-center justify-center">
+        <div class="absolute w-12 h-12 bg-[#72BAA7] rounded-lg"></div>
+        <div class="absolute w-10 h-10 bg-white rounded-lg"></div>
+        <div class="absolute w-4 h-20 bg-white"></div>
+        <div class="absolute w-20 h-4 bg-white"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="relative w-8 h-8 text-[#72BAA7]">
+          <path fill-rule="evenodd" d="M3 4.875C3 3.839 3.84 3 4.875 3h4.5c1.036 0 1.875.84 1.875 1.875v4.5c0 1.036-.84 1.875-1.875 1.875h-4.5A1.875 1.875 0 013 9.375v-4.5zM4.875 4.5a.375.375 0 00-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 00.375-.375v-4.5a.375.375 0 00-.375-.375h-4.5zm7.875.375c0-1.036.84-1.875 1.875-1.875h4.5C20.16 3 21 3.84 21 4.875v4.5c0 1.036-.84 1.875-1.875 1.875h-4.5a1.875 1.875 0 01-1.875-1.875v-4.5zm1.875-.375a.375.375 0 00-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 00.375-.375v-4.5a.375.375 0 00-.375-.375h-4.5zM6 6.75A.75.75 0 016.75 6h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75A.75.75 0 016 7.5v-.75zm9.75 0A.75.75 0 0116.5 6h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zM3 14.625c0-1.036.84-1.875 1.875-1.875h4.5c1.036 0 1.875.84 1.875 1.875v4.5c0 1.035-.84 1.875-1.875 1.875h-4.5A1.875 1.875 0 013 19.125v-4.5zm1.875-.375a.375.375 0 00-.375.375v4.5c0 .207.168.375.375.375h4.5a.375.375 0 00.375-.375v-4.5a.375.375 0 00-.375-.375h-4.5zm7.875-.75a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zm6 0a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zM6 16.5a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zm9.75 0a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zm-3 3a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75zm6 0a.75.75 0 01.75-.75h.75a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-.75a.75.75 0 01-.75-.75v-.75z" clip-rule="evenodd" />
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- <script type="module" src="/main.js"></script> -->
+  </body>
+</html>
