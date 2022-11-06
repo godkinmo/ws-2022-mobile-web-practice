@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>澳門健康碼</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-200 antialiased">
+    <div class="max-w-md mx-auto min-h-screen bg-[#EDFBF7] shadow-lg">
+      <nav class="fixed z-10 top-0 left-0 w-full">
+        <div class="bg-[#59AA93] h-16 flex">
+          <a href="/" class="border-r-[2px] border-[#CCCCCC] px-4 flex items-center justify-center">
+            <!-- <img src="/icons/solid/arrow-path.svg" class="w-16 h-16" /> -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#CCCCCC" class="w-14 h-14">
+              <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+              <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+            </svg>
+          </a>
+          <div class="flex items-center px-2">
+            <img
+              class="h-10 mr-2"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAMAAABG8BK2AAAAA3NCSVQICAjb4U/gAAAB/lBMVEX////////3///v///m///e///W///M///U/vrg+vnF///E//rP/Pe9//+2//+u//+2/fen///F9/S3+fXK9PC69/Kb//y29/GU//6U//W+8u7G8Oys9/Cl8uy66+eo7+mv7OfG5uOs6uW15+aG9Ou15t6f5N+t4NuU5d6z3dms3dmn39yb4N2j3tiP5N2W4dyy2dab3teP4duF5Nyo2dZ159+T3td65d2L4Nlv592W1M+c082Hz8uLzMZ8zsiDzMWMx8Fj0suEx8CQxMBpz8R6ysFdz8V9wr2CwLuJvLd+v7t8vbdYx76Eu7ZswbpsvrhzvbWEt7JcwLhyta5Lv7R6saxrtK1ysKtCvrNbtaxHu7BrsKtyradGuLA7uq88uK1rqaRypqIztq5jpJ5rop0/raRYm5RVnJZXmJJPmJFJmJNJlI8nm5JJjosrk4hAi4Q5ioQxjIUZlIRKhHskjoQxhoFAgXs6gX0Wi4IxgnwTi4FBfnkpg3o3fno7fHYfg3kag3wxfXkqf3ojf3oxfHUfgHcTgnkoe3MWgHQOgHY5dG4henQFgnoOfHMQe2sYd28hcmsocWoFeW4Pc2kea2UXbWQAdGsFcWQAcWQNamIAbGMJamEAa1sWY1sHZ1sOZFsGZV8IY1oAY1oDYFUJX1QIXVYQW1QJWlQCXFMMU03ZagB1AAAAqnRSTlMA/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////9Mj8NgAAAAJcEhZcwAAFxEAABcRAcom8z8AAAAfdEVYdFNvZnR3YXJlAE1hY3JvbWVkaWEgRmlyZXdvcmtzIDi1aNJ4AAAAFnRFWHRDcmVhdGlvbiBUaW1lADA1LzMxLzEyROyFHwAABjpJREFUWIXtWPt7E0UUpbuzu3VrQUQsoAIWxUpTa0oFCaJYfBd8RSiKTyoPeSi+qMFiW7C2io+AwU0nk83MbNLCf+mdx27SbZYSPj/9xfnyNcnszJkz5565d9IVK/6zZvz7801osWnG0q7l1jWRZVmLJ0GXbaFWcAxkHTj/w8H2xkmmtfvs2MkNyLh9INO+WmWM5TvMBuTRKvNZeUsLfNCbnEDjh1Ad+b5aCRPMzlvmLSYuaoY1LlAwHrfCpQ30KoMe4s/bLcCcAwyMyZUGmLeqose/eTswhmroOQ4rE3ok2pRhPlABaI99DZuSY5JBTBFmhEwDJK5RWrvqNEo8XGOUlR9FygxiWAIK6vixWi3vBb8g+5WLY6/FAt57emz0XpiNNs9U5wuZpJABB58Qv5pBsJ7juk6j2YCDDV1gQNReEVGsDTanY6BMjROPkIJtOan+J55+yLEjswGKs6ZnYKB/jWMPByKO7Gzz0BtoJAAUjzDn05ss4PRG+eQGQcgQIHcfyAdB4Ae1gnuWgfweu9g8Zgbaw6gIaqkzW6OwHgUjHxKEQPJMwecU/Ec4c4/4YlSiEU2nzCin7N2VOQkH+yP+VVcolb0hjSQa67ynxjjxF/YlaGygLeVabeGEu0pwARgsVs+7tnOC+QAjXsTzX3SfKQesNpoUKcO03J6eTY77pQAhan3A6Xw2oAR7uofPrXQ7+3d02Um+AffaDrQTTK4sVy/C5M9pSQIUsQQif3TBMNtKiDdIsHEkmx1+8HUu5sh9SbiiesNYE/xm5Z6R7Mhuq6mPTat7hkFGCfgLO6UKhEQTscYBQhifeeRPCGHAypmlhGBDm8GcUgHy/AdyImhMFFqRaAhoP68Tj8SL7VkScpA3r1eEIeuuRRzkFBGh8OFTZ0LdSLA1Hi0D7WPimVry2EskHOszJvKpL5+BlX5bF+2RkHNWDMa0weKSCWwLX7uf6+Vn+/sGB7f1pt6gsoPg/ftJMXQirrXH1EHOAhVKSMthsv53valJB0FmQXZKplDoWT9J6oqz3Yt3ZaC1Va4sB3ww2XlMD5wAl8GZQn0AUxRrrKa8viv2/mKRDZRmyroyVOS9d5T58bRlGG0QxseqsFv4/tNqrlhJ8djIEphAqara4Y+U9YoA09bWBjDMk88v7OTK0dIJ7PgtYfCHh+GTcMtlBWMOVpWrv9olRnnSAQAzGgsVAg2LkXfx0aMKE09omG0VpdWFXVI7iQIw2TjM2iAkI2D++hWX5OcrIcwCVTy/Cw+J9PFBFA94jUYwYhRnQQCvMaRgnpwP4BwFnNcHAflqLOCyKngkOpCz23tS6XR6a98WU8C0GXcN9qXSqVT/wNskZCwitTFmP9P6mDWwme60kWwKRfCRXy17QA8RIpO5+GGABMq0OPCXjrtI+qWtocmSa+1gKvsIg+FTSxKpYV8n2p4e5jkHaYwYEtoa6CQGb2wTWhGHQUPKWMLGNOeYi+ZHOMLtnkogmE41qVSmXdDqFIkv2Kjll8AEwjiSTdDbpDiYVoZp7Qi57EKmlS2SWDZk9/AwmZGZuMCazkwUgslVrqgRtq1DBclRFg2nc7tISeAZj1e6mlYqA3XNheIVJ698m8tN5cY+MRWZh7+fmsrlLl26PBsmmyCbUMNNa5hGiY1Q3/c5n9Iufnze96EwUxqVihk7qfia9jlKdE3TDtInHG2rhmVUL1JZk3izNVBHnkYyyw8ybQkYplE89ZT1oeSrpAnFytcJWc0K2Yh8E3HxSsFQ0yhFOFZ32fca6EyHaaviRSkYjuTxZa61prW3yjGOTteE3JQJ2tSFoeyzJHnrMltDIvOEbMLK0Mv0QZFcoHgv88sBwjXEaKgwnuy04RJsOztKYT4rsdMJd5I4n3SlpO8SxJucmJ4en56YVVVcxOh44gUprk93xQ+zRniRkGdWlPTh5XRp4NOR99VcjaJOI0hTaXKpSeaDOk6xhlqtTxr3r3e3gCIvcHvn5G1U3h88YV64d3/h3MK7CRvrzjM/zPGiuPmVl29XlkWE7FGxMa+o1Pbza5e3S1MgO13guirxuUNOy1TqhLKBjBLLiR8hd/pfBVCo6xLc/AqZ1lWJE+r95WB7K2FOAmp+HW8d6I5F+b/9c+1vOs/qjvOkYGoAAAAASUVORK5CYII="
+            />
+
+            <div class="text-white text-xs">
+              <div class="font-medium tracking-widest">澳門特別行政區政府衛生局</div>
+              <div class="text-[10px]">Serviços de Saúde do Governo da Região Administrativa Especial de Macau</div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <main class="pb-24 pt-16">
+        <!-- <img class="aspect-[3.5/1] object-cover" src="https://images.unsplash.com/photo-1667684550725-71e60ab8368e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" /> -->
+        <!-- <div class="aspect-[3.5/1] bg-center bg-cover bg-no-repeat" style="padding-bottom: 35%; background-image: url('https://images.unsplash.com/photo-1667684550725-71e60ab8368e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80')" /> -->
+
+        <!-- <div class="relative overflow-hidden" style="padding-bottom: 35%">
+          <img class="absolute w-full h-full object-cover" src="https://images.unsplash.com/photo-1667684550725-71e60ab8368e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" />
+        </div> -->
+
+        <div class="relative overflow-hidden bg-center bg-cover" style="padding-bottom: 35%; background-image: url('https://images.unsplash.com/photo-1667684550725-71e60ab8368e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80')">
+        </div>
+
+        <h1 class="text-2xl font-semibold px-2 pt-4">健康聲明</h1>
+
+        <form id="new-user-form" action="https://google.com">
+          <div class="border-b border-[#EEEEEE] px-4 py-6">
+            <section class="py-6">
+              <h2 class="text-xl font-medium bg-[#ABF0DD] py-1 px-2">個人資訊</h2>
+            </section>
+
+            <ul id="user-list1" class="space-y-4">
+              <li>
+                <div>
+                  <!-- <div class="flex flex-col border border-red-500 px-4 py-3"> -->
+                  <div class="flex flex-col border border-transparent px-4 py-3">
+                    <label for="name" class="font-medium"><span class="text-red-500">*</span>姓名</label>
+                    <input
+                      type="text"
+                      id="name"
+                      class="border border-gray-300 py-1 px-2 rounded-md mt-1"
+                    />
+                  </div>
+                  <div style="display: none;" class="text-white font-medium text-xs px-2 py-1 bg-red-500 rounded-md mt-1">必須填寫</div>
+
+                  <div class="flex flex-col px-4 py-3">
+                    <label for="gender" class="font-medium"><span class="text-red-500">*</span>性別</label>
+                    <select id="gender" class="border border-gray-300 py-2 px-2 rounded-md mt-1" required>
+                      <option value="">--</option>
+                      <option value="male">男</option>
+                      <option value="female">女</option>
+                    </select>
+                  </div>
+
+                  <div class="flex flex-col px-4 py-3">
+                    <label class="font-medium"><span class="text-red-500">*</span>出生日期</label>
+                    <div class="flex space-x-4">
+                      <label class="w-1/3">
+                        <span class="sr-only">出生日期</span>
+                        <select id="year" class="w-full border border-gray-300 py-2 px-2 rounded-md mt-1" required>
+                          <option value="">--</option>
+                          <option value="1990">1990</option>
+                          <option value="1991">1991</option>
+                          <option value="1992">1992</option>
+                          <option value="1993">1993</option>
+                          <option value="1994">1994</option>
+                          <option value="1995">1995</option>
+                          <option value="1996">1996</option>
+                          <option value="1997">1997</option>
+                          <option value="1998">1998</option>
+                          <option value="1999">1999</option>
+                          <option value="2000">2000</option>
+                          <option value="2001">2001</option>
+                          <option value="2002">2002</option>
+                          <option value="2003">2003</option>
+                          <option value="2004">2004</option>
+                        </select>
+                      </label>
+                      <select id="month" class="w-1/3 border border-gray-300 py-2 px-2 rounded-md mt-1" required>
+                        <option value="">--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                      </select>
+                      <select id="day" class="w-1/3 border border-gray-300 py-2 px-2 rounded-md mt-1" required>
+                        <option value="">--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="flex flex-col px-4 py-3">
+                    <div class="font-medium"><span class="text-red-500">*</span>入境澳門證件或身份證編號</div>
+                    <div class="flex mt-1">
+                      <div class="w-1/2">
+                        <label class="flex items-center space-x-2">
+                          <input type="radio" name="id-card-type" value="澳門居民身份證">
+                          <span>澳門居民身份證</span>
+                        </label>
+                      </div>
+                      <div class="w-1/2">
+                        <label class="flex items-center space-x-2">
+                          <input type="radio" name="id-card-type" value="入境澳門證件">
+                          <span>入境澳門證件</span>
+                        </label>
+                      </div>
+                    </div>
+
+                    <input
+                      type="text"
+                      id="id-card-number"
+                      class="border border-gray-300 py-1 px-2 rounded-md mt-1"
+                      required
+                    />
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- <div class="border-b border-[#EEEEEE] px-4 py-6">
+            <button type="button">add</button>
+          </div> -->
+
+          <section class="py-6 px-16 md:px-8">
+            <div class="flex justify-center space-x-8">
+              <button id="reset" type="button" class="truncate bg-white rounded-lg w-36 px-4 border border-[#CCCCCC] py-2">
+                重置
+              </button>
+              <button id="next" type="submit" class="truncate bg-white rounded-lg w-36 px-4 border border-[#67B5D6] py-2 text-white bg-[#75BEDA]">
+                下一步 >
+              </button>
+            </div>
+          </section>
+        </form>
+
+        <form id="save-info-form" style="display: none;">
+          <section class="px-4 py-6">
+            <div class="bg-[#ABF0DD] p-2 rounded-md">
+              <p>
+                將本次輸入的資料儲存在本裝置內，供下次開啟時使用；如本裝置非私大物品，不建議儲存，以減少個入資料外洩的風險！<br>
+                注:某些機型可能無法儲存。
+              </p>
+
+              <div class="flex mt-6">
+                <label class="w-1/2 flex items-center space-x-2">
+                  <input type="checkbox" name="save-info" value="1" />
+                  <span>同意儲存</span>
+                </label>
+                <label class="w-1/2 flex items-center space-x-2">
+                  <input type="checkbox" name="save-info" value="0" />
+                  <span>不同意儲存</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <button
+                id="submit-btn"
+                type="button"
+                class="bg-[#5CB75C] text-white w-full py-2 rounded-md"
+              >
+                下一步
+              </button>
+            </div>
+          </section>
+        </form>
+      </main>
+    </div>
+
+    <!-- <script type="module" src="/main.js"></script> -->
+    <!-- <script src="/js/app.js"></script> -->
+    <script type="module" src="/js/new.js"></script>
+  </body>
+</html>

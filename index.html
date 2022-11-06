@@ -27,6 +27,7 @@
 
         <div class="bg-[#59AA93] h-16 flex">
           <button type="button" class="border-r-[2px] border-[#CCCCCC] px-4 flex items-center justify-center">
+            <span class="sr-only">Refresh page</span>
             <!-- <img src="/icons/solid/arrow-path.svg" class="w-16 h-16" /> -->
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#CCCCCC" class="w-14 h-14">
@@ -51,62 +52,29 @@
         <section class="border-b border-[#EEEEEE] px-4 py-6">
           <h2 class="text-xl font-medium bg-[#ABF0DD] py-1 px-2">選擇申報的人（可多選）</h2>
 
-          <div class="mt-4 px-4">
-            <input id="jack" type="checkbox" checked class="peer w-6 h-6 border">
+          <div id="user-list" class="mt-4 px-4">
 
-            <label for="jack" class="inline-block ml-2">
-              <span class="block transform -translate-y-1.5">馮學健（註冊人）</span>
-            </label>
-
-            <div class="hidden peer-checked:block mt-4">
-              <table class="border w-full">
-                <thead>
-                  <tr>
-                    <th class="bg-[#F5F5F5] py-4 border text-left font-normal px-4">姓名:馮學健（註冊人）</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="border-b">
-                    <td class="bg-white flex px-2 py-3">
-                      <div class="w-1/2 font-semibold">症狀：</div>
-                      <div class="w-1/2">無</div>
-                    </td>
-                  </tr>
-                  <tr class="border-b">
-                    <td class="bg-white flex px-2 py-3">
-                      <div class="w-1/2 font-semibold">曾密切接觸病人：（有/無 ）</div>
-                      <div class="w-1/2">無</div>
-                    </td>
-                  </tr>
-                  <tr class="border-b">
-                    <td class="bg-white flex px-2 py-3">
-                      <div class="w-1/2 font-semibold">旅居史：（有/無）</div>
-                      <div class="w-1/2">無外遊史</div>
-                    </td>
-                  </tr>
-                  <tr class="border-b">
-                    <td class="bg-white flex px-2 py-3">
-                      <div class="w-1/2 font-semibold">在澳地址：</div>
-                      <div class="w-1/2">從身份證明局提取</div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
           </div>
         </section>
 
         <section class="border-b border-[#EEEEEE] py-6 px-16 md:px-8">
           <div class="flex flex-col md:flex-row md:flex-wrap space-y-4 md:space-y-0 md:gap-4">
-            <button type="button" class="truncate bg-white rounded-lg w-full md:w-auto px-4 border border-[#67B5D6] py-2 text-white bg-[#75BEDA]">
+            <button id="submit-btn" type="button" class="flex items-center space-x-2 truncate bg-white rounded-lg w-full md:w-auto px-4 border border-[#67B5D6] py-2 text-white bg-[#75BEDA]">
+              <svg id="submit-loading" style="display: none;" class="hidden animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+
               提交本地
             </button>
-            <button type="button" class="truncate bg-white rounded-lg w-full md:w-auto px-4 border border-[#CCCCCC] py-2">
+            <button type="button"
+              class="truncate bg-white rounded-lg w-full md:w-auto px-4 border border-[#CCCCCC] py-2 transition hover:scale-105"
+            >
               提交(出入境）
             </button>
-            <button type="button" class="truncate bg-white rounded-lg w-full md:w-auto px-4 border border-[#CCCCCC] py-2">
+            <a href="/new.html" class="truncate bg-white rounded-lg w-full md:w-auto px-4 border border-[#CCCCCC] py-2 text-center">
               新增
-            </button>
+            </a>
             <button type="button" class="truncate bg-white rounded-lg w-full md:w-auto px-4 border border-[#CCCCCC] py-2">
               修改
             </button>
@@ -147,8 +115,8 @@
 
     </div>
 
-    <!-- Popup Mdoal -->
-    <div class="fixed inset-0 z-10">
+    <!-- Popup Modal -->
+    <div id="modal" class="fixed inset-0 z-10">
       <div class="absolute inset-0 bg-black/25"></div>
 
       <div class="absolute inset-0 flex items-center justify-center">
@@ -166,7 +134,7 @@
               </p>
 
               <div class="grid grid-cols-2 gap-2 w-40 mt-4">
-                <div><img src="https://app.ssm.gov.mo/healthPHD/page/img/apple_dl2.png" /></div>
+                <div><img src="https://app.ssm.gov.mo/healthPHD/page/img/apple_dl2.png" alt="apple" /></div>
                 <div><img src="https://app.ssm.gov.mo/healthPHD/page/img/playstore_dl2.png" /></div>
                 <div><img src="https://app.ssm.gov.mo/healthPHD/page/img/huawei_dl2.png" /></div>
                 <div><img src="https://app.ssm.gov.mo/healthPHD/page/img/android_dl2.png" /></div>
@@ -180,7 +148,7 @@
             </div>
 
             <div class="flex justify-center">
-              <button type="button" class="border rounded-md px-8 py-1.5 text-sm border-gray-300 text-gray-800">稍後才安裝</button>
+              <button id="next-time-install-btn" type="button" class="border rounded-md px-8 py-1.5 text-sm border-gray-300 text-gray-800">稍後才安裝</button>
             </div>
           </div>
         </div>
@@ -188,5 +156,7 @@
     </div>
 
     <!-- <script type="module" src="/main.js"></script> -->
+    <!-- <script src="/js/app.js"></script> -->
+    <script type="module" src="/js/app.js"></script>
   </body>
 </html>
